@@ -3,10 +3,11 @@ MAINTAINER Richard Lesouef <rlesouef@gmail.com>
 
 # Install transmission supervisor
 RUN apk --update add \
-	redis
+	redis \
 	&& rm -rf /var/cache/apk/*
 
-RUN mkdir /data && chown redis:redis /data
+RUN mkdir /data
+RUN chown redis:redis /data
 VOLUME /data
 WORKDIR /data
 
