@@ -1,5 +1,5 @@
 # Redis on Alpine Linux
-[![](https://badge.imagelayers.io/rlesouef/alpine-transmission:latest.svg)](https://imagelayers.io/?images=rlesouef/alpine-transmission:latest 'Get your own badge on imagelayers.io')
+[![](https://badge.imagelayers.io/rlesouef/alpine-redis:latest.svg)](https://imagelayers.io/?images=rlesouef/alpine-redis:latest 'Get your own badge on imagelayers.io')
 
 How to use this image start a redis instance
 
