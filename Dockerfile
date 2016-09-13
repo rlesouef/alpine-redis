@@ -1,19 +1,24 @@
-FROM gliderlabs/alpine:3.3
+FROM alpine:latest
 
-# Install transmission supervisor
 RUN apk --update add \
-	bash nano \
-	redis \
-	&& rm -rf /var/cache/apk/*
+    bash nano curl \
+    redis && \
+    rm -rf /var/cache/apk/*
+
+RUN curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64" && \
+    chmod +x /usr/local/bin/gosu
 
 RUN mkdir /data
 RUN chown redis:redis /data
-VOLUME /data
+
+COPY src/ .
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 WORKDIR /data
 
-COPY docker-entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
-
 EXPOSE 6379
+
+VOLUME /data
+
 CMD [ "redis-server" ]
